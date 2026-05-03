@@ -5,14 +5,14 @@ from concurrent.futures import ThreadPoolExecutor
 app = Flask(__name__)
 API_BASE = "https://api.mail.tm"
 
-# كود الواجهة الاحترافي V32 TURBO - نسخة الجوال
+# كود الواجهة الاحترافي V32 TURBO - نسخة الجوال والكمبيوتر الموحدة
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3BoTheking | Render Mobile Edition</title>
+    <title>3BoTheking | Render Edition</title>
     <style>
         :root { --accent: #ffcc00; --bg: #000000; --panel: #0d0d0d; --border: #1a1a1a; }
         body { margin:0; background: var(--bg); color: #fff; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
@@ -21,8 +21,7 @@ HTML_TEMPLATE = """
         .toast { background: #111; border: 1px solid var(--border); padding: 12px 20px; border-right: 4px solid var(--accent); font-weight: 900; animation: slideIn 0.2s; font-size: 14px; text-align: center; }
         @keyframes slideIn { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
-        /* تعديلات الجوال للـ Sidebar */
-        .sidebar { width: 100%; background: var(--panel); border-bottom: 1px solid var(--border); display: flex; flex-direction: column; max-height: 40vh; }
+        .sidebar { width: 100%; background: var(--panel); border-bottom: 1px solid var(--border); display: flex; flex-direction: column; max-height: 45vh; }
         .sidebar-header { padding: 15px; border-bottom: 1px solid var(--border); text-align: center; color: var(--accent); font-weight: 900; font-size: 20px; }
         .settings-box { padding: 10px; background: #050505; border-bottom: 1px solid var(--border); }
         .input-main { width: 100%; background: #000; border: 1px solid var(--border); color: #fff; padding: 10px; font-weight: 900; border-radius: 6px; margin-bottom: 8px; text-align: center; font-size: 16px; box-sizing: border-box; }
@@ -46,7 +45,6 @@ HTML_TEMPLATE = """
         .status-dot { width: 8px; height: 8px; background: #444; border-radius: 50%; margin-left: 8px; }
         .status-dot.active { background: #00ff00; box-shadow: 0 0 10px #00ff00; }
 
-        /* تحسين العرض للشاشات الكبيرة (الكمبيوتر) ليبقى متوافقاً */
         @media (min-width: 768px) {
             body { flex-direction: row; }
             .sidebar { width: 380px; max-height: 100vh; border-left: 1px solid var(--border); border-bottom: none; }
@@ -57,7 +55,7 @@ HTML_TEMPLATE = """
 <body>
     <div id="notify-box"></div>
     <div class="sidebar">
-        <div class="sidebar-header">3BoTheking <span style="font-size: 12px;">MOBILE V32</span></div>
+        <div class="sidebar-header">3BoTheking <span style="font-size: 12px;">IPHONE V32</span></div>
         <div class="settings-box">
             <input type="number" id="genQty" class="input-main" value="1">
             <div class="color-grid">
@@ -177,13 +175,3 @@ def home(): return render_template_string(HTML_TEMPLATE)
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
-```[cite: 2]
-
-### التعديلات اللي تمت:
-1.  **Viewport Meta Tag:** أضفت سطر `viewport` لضمان أن المتصفح يفهم أبعاد شاشة الجوال.
-2.  **Flex-Direction:** جعلت العناصر تترتب عمودياً (`column`) في الجوال، وأفقياً (`row`) في الشاشات الكبيرة[cite: 2].
-3.  **Sidebar Height:** حددت ارتفاع القائمة الجانبية (اللي صارت فوق في الجوال) بـ `40vh` كحد أقصى عشان تترك مساحة للرسائل تحت.
-4.  **Font Sizes:** صغرت أحجام الخطوط والأزرار قليلاً لتناسب مساحة الجوال الضيقة.
-5.  **Text Truncation:** أضفت خاصية النقاط الثلاث للمسافات الطويلة عشان الإيميلات ما تخرّب شكل التصميم.
-
-ارفع الكود الجديد على GitHub، و **Render** بيحدث الموقع تلقائياً[cite: 2]. استمتع بالنسخة الجديدة!
